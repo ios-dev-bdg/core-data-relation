@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G46c" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Loan" representedClassName="Loan" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="totalItem" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="loaner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Loaner" inverseName="ofLoan" inverseEntity="Loaner"/>
+        <relationship name="tool" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Tool" inverseName="ofLoan" inverseEntity="Tool"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Loaner" representedClassName="Loaner" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="ofLoan" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Loan" inverseName="loaner" inverseEntity="Loan"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Tool" representedClassName="Tool" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+        <attribute name="itemCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="ofLoan" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Loan" inverseName="tool" inverseEntity="Loan"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="Loan" positionX="-163.7734375" positionY="-15.51171875" width="128" height="118"/>
+        <element name="Loaner" positionX="90.79296875" positionY="111.16015625" width="128" height="88"/>
+        <element name="Tool" positionX="-390.00390625" positionY="102.87109375" width="128" height="118"/>
+    </elements>
+</model>
